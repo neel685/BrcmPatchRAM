@@ -50,16 +50,16 @@ static const uint8_t kSkipUpdateFilePathPatched[]  = "/System/Library/CoreServic
 
 static const uint8_t kVendorCheckOriginal[] =
 {
+    0x74, 0x08,     // jz short 08
     0x81, 0xFA,              // cmp edx
-    0x5C, 0x0A, 0x00, 0x00,  // Vendor BRCM,
-    0x74                     // jnz short
+    0x12, 0x0A, 0x00, 0x00  // Vendor CSR
 };
 
 static const uint8_t kVendorCheckPatched[] =
 {
+    0xEB, 0x08,     // jmp short 08
     0x81, 0xFA,              // cmp edx
-    0x5C, 0x0A, 0x00, 0x00,  // Vendor BRCM,
-    0xEB                     // jmp short
+    0x12, 0x0A, 0x00, 0x00  // Vendor CSR
 };
 
 // Workaround for bugged chipset range check that
